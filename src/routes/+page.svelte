@@ -1,6 +1,8 @@
 <script>
-	import { HeroSection } from '$lib';
+	import { HeroSection, ChapterPreview } from '$lib';
 
 </script>
 
 <HeroSection />
+
+<ChapterPreview />
