@@ -22,6 +22,11 @@
 
 	let selectedChapterNumber = $state(1);
 
+	// let { selectedStrapline, selectedExcerpt } = $derived(
+	let selectedChapter = $derived(
+		chapters.find((ch) => ch.number === selectedChapterNumber)
+	);
+
 	const selectChapter = (chapterNumber) => (selectedChapterNumber = chapterNumber);
 </script>
 
@@ -34,9 +39,9 @@
 					<button
 						class="chapter-title"
 						class:selected-chapter-title={selectedChapterNumber === number}
-            onclick={() => selectChapter(number)}
+						onclick={() => selectChapter(number)}
 						aria-controls={`chapter-info-${number}`}
-						aria-expanded="true"
+						aria-expanded={selectedChapterNumber === number}
 					>
 						<h3>Chapter {number}: {title}</h3>
 					</button>
@@ -46,12 +51,12 @@
 
 		<!-- Right Side -->
 		<div class="chapter-info">
-			{#each chapters as { strapline, excerpt, number }}
-				<h3 class="chapter-strapline mb-s italic">{strapline}</h3>
-				<p>
-					{excerpt} - {selectedChapterNumber}
-				</p>
-			{/each}
+			<h3 class="chapter-strapline mb-s italic">{selectedChapter.strapline}</h3>
+			<p>
+				<!-- {selectedChapter.excerpt} -->
+				{selectedChapterNumber}
+         {chapters[selectedChapterNumber - 1].excerpt}
+			</p>
 		</div>
 	</div>
 </section>
