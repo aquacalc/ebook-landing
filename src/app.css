@@ -2,6 +2,10 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography'; */
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *::after,
 *::before {
@@ -45,14 +49,19 @@ body {
 
 /* TYPOGRAPHY */
 h1 {
-  font-size: 75px;
+  /* font-size: 75px; */
+  /* see: https://www.youtube.com/watch?v=2IV08sP9m3U */
+  font-size: clamp(1.8rem, 10vw, 5rem);
+  /* font-size: clamp(1.8rem, calc(10vw + 1rem), 5rem); */
   font-family: "Anton", sans-serif;
   line-height: 1.1; /* Adjust as needed for spacing */
   font-weight: bold;
 }
 
 h2 {
-  font-size: 60px;
+  /* font-size: 60px; */
+  font-size: clamp(1.8rem, 5.5vw, 3.5rem);
+  /* font-size: clamp(1.8rem, calc(5.5vw + 1rem), 3.5rem); */
   font-family: "Anton", sans-serif;
   line-height: 1.2;
   font-weight: bold;
