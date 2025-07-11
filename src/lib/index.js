@@ -2,5 +2,9 @@
 import HeroSection from './components/HeroSection.svelte';
 import Button from './components/Button.svelte';
 import ChapterPreview from './components/ChapterPreview.svelte';
+import AuthorSection from './components/AuthorSection.svelte';
+import FaqSection from './components/FaqSection.svelte';
 
-export { HeroSection, Button, ChapterPreview };
+import Sidebar from './components/Sidebar.svelte';
+
+export { HeroSection, Button, ChapterPreview, AuthorSection, FaqSection, Sidebar };
