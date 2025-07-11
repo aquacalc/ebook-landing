@@ -19,6 +19,10 @@
 				'Content-Type': 'application/json'
 			}
 		});
+
+		const { sessionId } = await res.json();
+
+		await stripe.redirectToCheckout({sessionId})
 	};
 </script>
 
