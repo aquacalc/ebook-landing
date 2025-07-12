@@ -1,6 +1,8 @@
 <script>
 	import Button from './Button.svelte';
 
+	let { children } = $props();
+
 	const handleClick = () => alert('Yadda!');
 </script>
 
@@ -11,21 +13,25 @@
 		<h1 class="purple">MOVE TO</h1>
 		<h1 class="purple mb-xs">SPAIN</h1>
 		<h4 class="semi-bold italic">There's no need to make the same mistake that I made!</h4>
-		<img src="book_cover.png" alt="" class="book-cover" />
-		<img src="phone_cover.png" alt="" class="phone-cover" />
+		<img src="/book_cover.png" alt="" class="book-cover" />
+		<img src="/phone_cover.png" alt="" class="phone-cover" />
 	</div>
 
 	<!-- Right Side -->
 	<div class="hero-text white text-center">
-		<h2>This eBook will</h2>
-		<h2>Save you money,</h2>
-		<h2 class="mb-m">time, and nerves!</h2>
-		<p class="light-grey mb-m">
-			I moved to Spain seven years ago. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-			Enim doloribus modi dolor beatae recusandae assumenda. Cum, magni. At ullam error dignissimos
-			ad? Iste quos nostrum tenetur commodi eos aperiam accusantium.
-		</p>
-		<Button onclick={handleClick}>Buy the eBook for $10</Button>
+		{#if children}
+			{@render children()}
+		{:else}
+			<h2>This eBook will</h2>
+			<h2>Save you money,</h2>
+			<h2 class="mb-m">time, and nerves!</h2>
+			<p class="light-grey mb-m">
+				I moved to Spain seven years ago. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+				Enim doloribus modi dolor beatae recusandae assumenda. Cum, magni. At ullam error
+				dignissimos ad? Iste quos nostrum tenetur commodi eos aperiam accusantium.
+			</p>
+			<Button onclick={handleClick}>Buy the eBook for $10</Button>
+		{/if}
 	</div>
 </section>
 
