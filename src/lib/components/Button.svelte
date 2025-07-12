@@ -2,6 +2,8 @@
 	import { loadStripe } from '@stripe/stripe-js';
 	import { PUBLIC_STRIPE_KEY } from '$env/static/public';
 
+	import { goto } from '$app/navigation';
+
 	// $inspect(PUBLIC_STRIPE_KEY);
 
 	// Destructure children and other props from component props
@@ -9,20 +11,24 @@
 
 	// Click handler for the button
 	const onclick = async () => {
-		// Initialize Stripe with public key
-		const stripe = await loadStripe(PUBLIC_STRIPE_KEY);
+		try {
+			// Initialize Stripe with public key
+			const stripe = await loadStripe(PUBLIC_STRIPE_KEY);
 
-		// Send POST request to backend checkout endpoint
-		const res = await fetch('/api/checkout', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+			// Send POST request to backend checkout endpoint
+			const res = await fetch('/api/checkout', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
 
-		const { sessionId } = await res.json();
+			const { sessionId } = await res.json();
 
-		await stripe.redirectToCheckout({sessionId})
+			await stripe.redirectToCheckout({ sessionId });
+		} catch (error) {
+			goto('/checkout/failure');
+		}
 	};
 </script>
 
