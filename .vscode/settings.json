@@ -1,0 +1,11 @@
+{
+	"workbench.preferredHighContrastColorTheme": "Abyss",
+	"testing.coverageBarThresholds": {
+		"red": 0,
+		"yellow": 60,
+		"green": 90
+	},
+	"workbench.preferredDarkColorTheme": "Abyss",
+	"workbench.preferredHighContrastLightColorTheme": "Abyss",
+	"workbench.colorTheme": "Abyss"
+}
